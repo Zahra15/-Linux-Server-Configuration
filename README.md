@@ -24,24 +24,24 @@ Installed software:
   **Steps:**
   
   **Lightsail instance**
-  
-    create a Linux instance in Amazon lightsail website
+
+  create a Linux instance in Amazon lightsail website
     
    **SSH the server**
    
-    1. from Amazon lghtsail console download the instance private key
+   1. from Amazon lghtsail console download the instance private key
     
-    2. In the local machine place the private key file in .ssh folder
+   2. In the local machine place the private key file in .ssh folder
     
-    3. ssh the server by typing the following command 
+   3. ssh the server by typing the following command 
     
     ```
     ssh -i ~/.ssh/instance_private_key.pem@00.00.00.00
     ```
     
-    **Update the server**
+   **Update the server**
     
-    using the following commands
+   using the following commands
     
     ```
     sudo apt-get update
@@ -49,11 +49,11 @@ Installed software:
     sudo apt-get dist-upgrade
     ```
     
-    **Change SSH port**
+   **Change SSH port**
     
-    1. change the ssh port number form the file /etc/ssh/sshd_config
+   1. change the ssh port number form the file /etc/ssh/sshd_config
     
-    2. on Amazon lightsail website change the instance firewall settings to the following
+   2. on Amazon lightsail website change the instance firewall settings to the following
     
     ```
     HTTP	TCP	80	
@@ -61,19 +61,19 @@ Installed software:
     Custom	TCP	2200
     ```
     
-    3. restart ssh 
+   3. restart ssh 
     
     ```
     sudo service ssh restart
     ```
     
-    4. ssh from the new port
+   4. ssh from the new port
     
     ```
     ssh -i ~/.ssh/instance_private_key.pem -p 2200 ubuntu@00.00.00.00
     ```
     
-    **Configuer and enable Ubuntu firewall**
+   **Configuer and enable Ubuntu firewall**
     
     ```
     sudo ufw default deny incoming
@@ -85,59 +85,59 @@ Installed software:
     sudo ufw enable
     ```
     
-     **creare grader account**
+   **creare grader account**
      
     ```
     sudo adduser grader
     ```
     
-    to give the grader account sudo permission 
+   to give the grader account sudo permission 
     
-    edit the sudoers file and add the line
+   edit the sudoers file and add the line
     
     ```
     grader ALL=(ALL:ALL) ALL
     ```
     
     
-     **Create SSH key-gen**
+   **Create SSH key-gen**
      
-    1. on the local machine run 
+   1. on the local machine run 
     
     ```
     ssh-keygen
     ```
     
-    2. copy the content of the file key.pub
+   2. copy the content of the file key.pub
     
-    on the server
+   on the server
     
-    3. cd to the grader home directory 
+   3. cd to the grader home directory 
     
-    4. create .ssh directory
+   4. create .ssh directory
     
-    5. create .ssh/authorized_keys file and paste the key on it
+   5. create .ssh/authorized_keys file and paste the key on it
     
-    6. change the premission of .ssh folder to 700 
+   6. change the premission of .ssh folder to 700 
+   
+   and the authorized_key file to 644
     
-    and the authorized_key file to 644
+   7. change the owner of the .ssh directory to the grader
     
-    7. change the owner of the .ssh directory to the grader
-    
-    8. disable passwordauthentication from the file /etc/ssh/sshd_config
+   8. disable passwordauthentication from the file /etc/ssh/sshd_config
     
     
-     **Installing packages **
-     
+   **Installing packages **
+    
       ```
       sudo apt-get install apache2
       sudo apt-get install libapache2-mod-wsgi-py3
       sudo apt-get install postgresql
       ```
       
-     **Postgresql configuration**
+   **Postgresql configuration**
      
-     open postgresql terminal 
+   open postgresql terminal 
      
     ```
     sudo su - postgres
@@ -151,7 +151,7 @@ Installed software:
     exit
     ```
     
-     **Clone catalog application **
+   **Clone catalog application **
      
       ```
       sudo apt-get install git
@@ -165,7 +165,7 @@ Installed software:
       
       ```
       
-      catalog.wsgi content
+   catalog.wsgi content
       
       ```
       #!/usr/bin/python
@@ -180,7 +180,7 @@ Installed software:
 
       ```
       
-      create the virtual environment
+   create the virtual environment
       
       ```
       sudo pip install virtualenv 
@@ -197,14 +197,14 @@ Installed software:
       deactivate
       ```
       
-      rename the application.py file to __init__.py
+   rename the application.py file to __init__.py
       
       
-      ** Configure the virtual host **
+   ** Configure the virtual host **
       
-      on the file /etc/apache2/sites-available/catalog.conf
+   on the file /etc/apache2/sites-available/catalog.conf
       
-      paste the followint content
+   paste the following content
       
       ```
       <VirtualHost *:80>
