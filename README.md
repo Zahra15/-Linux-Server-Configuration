@@ -35,19 +35,19 @@ Installed software:
     
    3. ssh the server by typing the following command 
     
-    ```
+    
     ssh -i ~/.ssh/instance_private_key.pem@00.00.00.00
-    ```
+    
     
    **Update the server**
     
    using the following commands
     
-    ```
+    
     sudo apt-get update
     sudo apt-get upgrade
     sudo apt-get dist-upgrade
-    ```
+    
     
    **Change SSH port**
     
@@ -55,27 +55,27 @@ Installed software:
     
    2. on Amazon lightsail website change the instance firewall settings to the following
     
-    ```
+    
     HTTP	TCP	80	
     Custom	UDP	123	
     Custom	TCP	2200
-    ```
+    
     
    3. restart ssh 
     
-    ```
+    
     sudo service ssh restart
-    ```
+    
     
    4. ssh from the new port
     
-    ```
+    
     ssh -i ~/.ssh/instance_private_key.pem -p 2200 ubuntu@00.00.00.00
-    ```
+    
     
    **Configuer and enable Ubuntu firewall**
     
-    ```
+    
     sudo ufw default deny incoming
     sudo ufw default allow outgoing
     sudo ufw allow 2200/tcp
@@ -83,30 +83,30 @@ Installed software:
     sudo ufw allow 123/udp
     sudo ufw deny 22
     sudo ufw enable
-    ```
+    
     
    **creare grader account**
      
-    ```
+    
     sudo adduser grader
-    ```
+    
     
    to give the grader account sudo permission 
     
    edit the sudoers file and add the line
+
     
-    ```
     grader ALL=(ALL:ALL) ALL
-    ```
+    
     
     
    **Create SSH key-gen**
      
    1. on the local machine run 
     
-    ```
+    
     ssh-keygen
-    ```
+    
     
    2. copy the content of the file key.pub
     
@@ -129,17 +129,17 @@ Installed software:
     
    **Installing packages **
     
-      ```
+      
       sudo apt-get install apache2
       sudo apt-get install libapache2-mod-wsgi-py3
       sudo apt-get install postgresql
-      ```
+      
       
    **Postgresql configuration**
      
    open postgresql terminal 
      
-    ```
+    
     sudo su - postgres
     sql
     postgres=# CREATE USER catalog WITH PASSWORD 'catalogdb';
@@ -149,11 +149,11 @@ Installed software:
     catalog=# GRANT ALL ON SCHEMA public TO catalog;
     catalog=# \q
     exit
-    ```
+    
     
    **Clone catalog application **
      
-      ```
+      
       sudo apt-get install git
       cd /var/www
       sudo mkdir catalog
@@ -162,12 +162,12 @@ Installed software:
       cd /var/www/catalog
       sudo git clone github-url catalog
       sudo nano catalog.wsgi
+
       
-      ```
       
    catalog.wsgi content
       
-      ```
+      
       #!/usr/bin/python
       import sys
      import logging
@@ -178,11 +178,11 @@ Installed software:
      from catalog import app as application
      application.secret_key = 'super_secret_key'
 
-      ```
+      
       
    create the virtual environment
       
-      ```
+      
       sudo pip install virtualenv 
       sudo virtualenv venv 
       source venv/bin/activate 
@@ -195,7 +195,7 @@ Installed software:
       sudo apt-get install libpq-dev 
       sudo pip install sqlalchemy_utils 
       deactivate
-      ```
+      
       
    rename the application.py file to __init__.py
       
@@ -206,7 +206,7 @@ Installed software:
       
    paste the following content
       
-      ```
+      
       <VirtualHost *:80>
                 ServerName 3.17.74.208
                 ServerAdmin admin@3.17.74.208
@@ -224,4 +224,4 @@ Installed software:
                 LogLevel warn
                 CustomLog ${APACHE_LOG_DIR}/access.log combined
       </VirtualHost>
-      ```
+      
