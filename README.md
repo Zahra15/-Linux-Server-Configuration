@@ -225,3 +225,5 @@ Installed software:
                 CustomLog ${APACHE_LOG_DIR}/access.log combined
       </VirtualHost>
       
+   ** Resources **
+   https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
