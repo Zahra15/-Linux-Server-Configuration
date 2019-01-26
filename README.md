@@ -127,7 +127,7 @@ Installed software:
    8. disable passwordauthentication from the file /etc/ssh/sshd_config
     
     
-   **Installing packages **
+**Installing packages**
     
       
       sudo apt-get install apache2
@@ -151,7 +151,7 @@ Installed software:
     exit
     
     
-   **Clone catalog application **
+   **Clone catalog application**
      
       
       sudo apt-get install git
@@ -200,7 +200,7 @@ Installed software:
    rename the application.py file to __init__.py
       
       
-   ** Configure the virtual host **
+   **Configure the virtual host **
       
    on the file /etc/apache2/sites-available/catalog.conf
       
