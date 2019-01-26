@@ -200,7 +200,7 @@ Installed software:
    rename the application.py file to __init__.py
       
       
-   **Configure the virtual host **
+   **Configure the virtual host**
       
    on the file /etc/apache2/sites-available/catalog.conf
       
