@@ -1,8 +1,8 @@
-server ip address: 3.17.74.208
+server ip address: 18.191.205.16
 
 server HSS port: 2200
 
-web application url: http://3.17.74.208.xip.io/
+web application url: http://18.191.205.16/.xip.io/
 
 Installed software:
   * apache2 
@@ -207,23 +207,25 @@ Installed software:
    paste the following content
       
       
-      <VirtualHost *:80>
-                ServerName 3.17.74.208
-                ServerAdmin admin@3.17.74.208
-                WSGIScriptAlias / /var/www/catalog/catalog.wsgi
-                <Directory /var/www/catalog/catalog/>
-                        Order allow,deny
-                        Allow from all
-                </Directory>
-                Alias /static /var/www/catalog/catalog/static
-                <Directory /var/www/catalog/catalog/static/>
-                        Order allow,deny
-                        Allow from all
-                </Directory>
-                ErrorLog ${APACHE_LOG_DIR}/error.log
-                LogLevel warn
-                CustomLog ${APACHE_LOG_DIR}/access.log combined
-      </VirtualHost>
+    <VirtualHost *:80>
+        ServerName 18.191.205.16
+        ServerAlias ec2-18-191-205-16.us-east-2.compute.amazonaws.com
+        ServerAdmin admin@18.191.205.16
+        WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python3.5/site-packages
+        WSGIProcessGroup catalog
+        WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+        <Directory /var/www/catalog/catalog/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        Alias /static /var/www/catalog/catalog/static
+        <Directory /var/www/catalog/catalog/static/>
+            Order allow,deny
+            Allow from all
+        </Directory> ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    </VirtualHost>
       
    ** Resources **
    https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
