@@ -2,7 +2,7 @@ server ip address: 18.191.205.16
 
 server HSS port: 2200
 
-web application url: http://18.191.205.16/.xip.io/
+web application url: http://18.191.205.16/
 
 Installed software:
   * apache2 
