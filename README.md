@@ -85,7 +85,7 @@ Installed software:
     sudo ufw enable
     
     
-   **creare grader account**
+   **create grader account**
      
     
     sudo adduser grader
@@ -198,6 +198,12 @@ Installed software:
       
       
    rename the application.py file to __init__.py
+   
+  
+change the document root to
+/var/www/catalog
+
+ ```sudo nano /etc/apache2/sites-available/000-default.conf```
       
       
    **Configure the virtual host**
