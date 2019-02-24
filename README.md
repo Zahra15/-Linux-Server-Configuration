@@ -1,8 +1,8 @@
-server ip address: 18.191.205.16
+server ip address: 00.000.000.00
 
 server HSS port: 2200
 
-web application url: http://18.191.205.16/
+web application url: http://00.000.000.00/
 
 Installed software:
   * apache2 
@@ -214,9 +214,9 @@ change the document root to
       
       
     <VirtualHost *:80>
-        ServerName 18.191.205.16
-        ServerAlias ec2-18-191-205-16.us-east-2.compute.amazonaws.com
-        ServerAdmin admin@18.191.205.16
+        ServerName 00.000.000.00
+        ServerAlias ec2-00-000-000-00.us-east-2.compute.amazonaws.com
+        ServerAdmin admin@00.000.000.00
         WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python3.5/site-packages
         WSGIProcessGroup catalog
         WSGIScriptAlias / /var/www/catalog/catalog.wsgi
